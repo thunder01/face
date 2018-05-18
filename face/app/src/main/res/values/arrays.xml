@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--身份证正反面-->
+    <string-array name="id_card_face">
+        <item>正面(含头像)</item>
+        <item>反面(含国徽)</item>
+    </string-array>
+</resources>

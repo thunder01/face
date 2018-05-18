@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId 'com.verfiface.activity'
+        minSdkVersion 23
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        def alias = 'verfiface'
+        def password = '123456'
+        def filePath = 'D:/work/pay system/face/verfiface.jks' // '../facesharp.jks'
+        debug {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
+        release {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
+    }
+
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    compile project(path: ':faceplatform-ui')
+    compile project(path: ':faceplatform-release')
+    //添加依赖
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'pub.devrel:easypermissions:1.0.1'
+    implementation 'cn.bingoogolapple:bga-qrcode-zbar:1.2.1'
+    implementation 'com.alibaba:fastjson:1.2.47'
+    compile 'com.zyao89:zloading:1.1.2'
+}
